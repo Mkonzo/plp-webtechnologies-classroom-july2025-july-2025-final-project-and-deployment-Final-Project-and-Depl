@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OUR SITE • Contact</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">MySite</a>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="site-nav">
+        <ul id="nav-list" class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Contact Us</h1>
+    <form id="contact-form" class="contact-form">
+      <label for="name">Name</label>
+      <input id="" name="name" type="text" required />
+
+      <label for="email">Email</label>
+      <input id="contact-email" name="email" type="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit" class="btn">Send</button>
+      <p id="contact-message" class="form-note" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> OurSite. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Lightweight page-specific handler to avoid breaking existing script.js features
+    (function() {
+      var form = document.getElementById('contact-form');
+      var email = document.getElementById('contact-email');
+      var messageEl = document.getElementById('contact-message');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!email.value || email.value.indexOf('@') === -1) {
+          messageEl.textContent = 'Please enter a valid email.';
+          messageEl.style.color = 'crimson';
+          return;
+        }
+        messageEl.textContent = 'Thanks! Your message has been sent.';
+        messageEl.style.color = 'green';
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
+
